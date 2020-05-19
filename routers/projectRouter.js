@@ -40,7 +40,7 @@ router.get('/:id',(req, res)=>{
 })
 
 router.post('/', (req, res)=>{
-    if(req.body.name & req.body.description){
+    if(req.body.name && req.body.description){
         
         db.insert(req.body)
             .then(project=>{
@@ -59,10 +59,10 @@ router.post('/', (req, res)=>{
 
 })
 
-router.put('/',(req, res)=>{
+router.put('/:id',(req, res)=>{
     const id = req.params.id
     const body = req.body
-    if(req.body.name & req.body.description){
+    if(req.body.name && req.body.description){
         db.update(id, body)
             .then(project=>{
                 res.status(200).json(project)
@@ -81,15 +81,15 @@ router.put('/',(req, res)=>{
         
 })
 
-router.delete('/',(req, res)=>{
+router.delete('/:id',(req, res)=>{
     const id = req.params.id;
-    db.delete(id)
+    db.remove(id)
     .then(project=>{
         if (project){
             res.status(200).json({message:"project deleted "})
         }
         else{
-            res.status(200).json({message:"project deleted "})
+            res.status(400).json({message:"project not found "})
         }
         
     })

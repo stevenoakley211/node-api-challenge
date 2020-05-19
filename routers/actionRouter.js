@@ -65,7 +65,7 @@ router.put('/:id',(req, res)=>{
 
 router.delete('/:id',(req, res)=>{
     const id = req.params.id
-    db.delete(id)
+    db.remove(id)
     .then(actions=>{
         if (actions) {
                     res.status(200).json(actions)
