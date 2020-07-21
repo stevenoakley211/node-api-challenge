@@ -49,10 +49,10 @@ router.get("/:id",(req,res)=>{
         })
 })
 // Update
-router.put('/id',fieldCheck, (req, res) => {
+router.put('/:id',fieldCheck, (req, res) => {
     projects.update(req.params.id,req.body)
         .then( updatedProject => {
-            res.statsus(200).json(updatedProject)
+            res.status(200).json(updatedProject)
         })
         .catch(err =>{
             res.status(500).json(

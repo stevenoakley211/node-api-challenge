@@ -4,7 +4,7 @@ const checkIfValidProject = require("../middleware/checkIfValidProject")
 const router = express.Router()
 
 // Create
-router.post("/:id",checkIfValidProject, (req, res)=>{
+router.post("/",checkIfValidProject, (req, res)=>{
     actions.insert(req.body)
     .then(action => {
         res.status(200).json({message:"action Added"})

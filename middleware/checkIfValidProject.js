@@ -1,4 +1,4 @@
-const projects = require("../data.helpers/projectModel")
+const projects = require("../data/helpers/projectModel")
 
 function checkIfValidProject (req, res, next)  {
     projects.get(req.body.project_id)
